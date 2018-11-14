@@ -88,7 +88,24 @@ class Geolocation extends AbstractHttp
      * @param AddressInterface $address
      * @return CoordinatesInterface
      */
-    public function getCoordinates(AddressInterface $address) : CoordinatesInterface
+    public function getCoordinatesByObject(AddressInterface $address) : CoordinatesInterface
+    {
+        $url = $this->addressQuery($address->getFormattedAddress());
+        $json = $this->fetchUrl($url);
+
+        // convert google data to coordinates
+        $coordinates = CoordinatesBuild::create($json->results[0]);
+
+        return $coordinates;
+    }
+
+    /**
+     * Get coordinates using string
+     *
+     * @param string $address
+     * @return CoordinatesInterface
+     */
+    public function getCoordinatesByString(string $address) : CoordinatesInterface
     {
         $url = $this->addressQuery($address);
         $json = $this->fetchUrl($url);
@@ -100,6 +117,8 @@ class Geolocation extends AbstractHttp
     }
 
     /**
+     * Build coordinates query
+     *
      * @param CoordinatesInterface $coordinates
      * @return string
      */
@@ -112,12 +131,14 @@ class Geolocation extends AbstractHttp
     }
 
     /**
-     * @param AddressInterface $address
+     * Build address query
+     *
+     * @param string $formattedAddress
      * @return string
      */
-    private function addressQuery(AddressInterface $address) : string
+    private function addressQuery(string $formattedAddress) : string
     {
-        $url = sprintf(self::API_ADDRESS_URL_SSL, rawurlencode($address->getFormattedAddress()));
+        $url = sprintf(self::API_ADDRESS_URL_SSL, rawurlencode($formattedAddress));
         $url = $this->buildQuery($url, $this->apiKey, $this->locale, $this->region);
 
         return $url;
