@@ -1,7 +1,7 @@
 {
     "name": "juskiewicz/geolocation",
     "type": "library",
-    "description": "Biblioteka obsługująca GoogleMapsApi",
+    "description": "Biblioteka obsługująca Geocoding API firmy Google ",
     "keywords": ["geolocation", "google", "maps", "api", "php"],
     "homepage": "https://github.com/juskiewicz/geolocation",
     "license": "MIT",
