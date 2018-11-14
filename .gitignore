@@ -1,0 +1,5 @@
+.idea/
+examples2/
+vendor/
+composer.phar
+composer.lock
