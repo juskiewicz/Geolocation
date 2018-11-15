@@ -1,4 +1,4 @@
-# Geolocation klasa łącząca się z Google Maps API
+# Geolocation klasa obsługująca Google Maps API
 [![Latest Stable Version](http://img.shields.io/packagist/v/juskiewicz/geolocation.svg)](https://packagist.org/packages/juskiewicz/geolocation)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/juskiewicz/geolocation/blob/master/LICENSE)
 
